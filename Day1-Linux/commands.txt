@@ -1,0 +1,58 @@
+---File System
+pwd
+ls
+cd
+mkdir
+touch
+rm
+cp
+mv
+find
+
+
+---File Viewing
+cat
+less
+head
+tail
+nano or vim
+
+
+---Permissions
+chmod
+chown
+sudo
+
+
+---Users
+whoami
+id
+passwd
+
+
+---Processes
+ps
+top
+htop (optional)
+kill
+
+
+---Services
+systemctl status
+systemctl start
+systemctl stop
+systemctl restart
+
+
+---Networking
+ping
+curl
+wget
+ssh
+
+
+---Package Management
+apt update
+apt install
+apt remove
+apt upgrade
