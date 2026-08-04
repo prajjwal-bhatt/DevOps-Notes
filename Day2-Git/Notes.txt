@@ -1,0 +1,191 @@
+## Day 2 – Git & GitHub Fundamentals
+
+### What is Git?
+
+Git is a Distributed Version Control System (DVCS) used to track changes, manage versions, collaborate with teams, and restore previous versions of a project.
+
+### Git vs GitHub
+
+* **Git:** Local version control software.
+* **GitHub:** Cloud platform to host and collaborate on Git repositories.
+
+### Repository
+
+A folder tracked by Git. After running `git init`, Git creates a hidden `.git` directory that stores all version history.
+
+### Git Workflow
+
+
+Working Directory
+        ↓
+Staging Area
+        ↓
+Local Repository (Commit)
+        ↓
+GitHub (Remote Repository)
+
+
+---
+
+# Git Commands
+
+## `git init`
+
+Initializes a folder as a Git repository by creating the `.git` folder.
+
+## `git status`
+
+Displays the current state of the repository (modified, staged, untracked files, current branch).
+
+## `git add <file>`
+
+Stages a specific file for the next commit.
+
+## `git add .`
+
+Stages all modified and new files in the current directory.
+
+## `git commit -m "message"`
+
+Creates a permanent snapshot (commit) of the staged changes.
+
+## `git log`
+
+Displays the complete commit history.
+
+## `git log --oneline`
+
+Displays commit history in a compact one-line format.
+
+## `git diff`
+
+Shows differences between the current working directory and the staging area.
+
+## `git diff --staged`
+
+Shows differences between the staging area and the last commit.
+
+## `git restore <file>`
+
+Discards uncommitted changes and restores the file to its last committed state.
+
+## `git reset <file>`
+
+Removes a file from the staging area without deleting it.
+
+## `git rm <file>`
+
+Removes a tracked file and stages the deletion.
+
+## `git mv <old> <new>`
+
+Renames or moves a tracked file while preserving Git history.
+
+
+---
+
+
+# Branching
+
+## `git branch`
+
+Lists all branches
+git branch feature-login -- Create a branch named "feature-login"
+
+
+## `git switch <branch>`
+
+Switches to another branch.
+git switch feature-login
+```
+
+## `git merge <branch>`
+
+Merges the specified branch into the current branch, it uses a Pulling mechanism.
+git merge feature-login  --  Suppose we're in main branch so this command will merge the *feature-login* branch to *main* branch
+
+
+---
+
+
+# Remote Repository
+
+## `git clone <url>`
+
+Creates a local copy of a remote repository.
+
+## `git push`
+
+Uploads local commits to GitHub.
+git push origin master
+         (Name  (Branch
+          of      of
+         remote  remote
+          repo)  repo)
+
+## `git pull`
+
+Downloads and merges the latest changes from GitHub.
+
+
+---
+
+
+# Common Git Workflow
+
+
+Create Project
+      ↓
+git init
+      ↓
+Create/Edit Files
+      ↓
+git status
+      ↓
+git add .
+      ↓
+git commit -m "message"
+      ↓
+git log
+      ↓
+git push
+      ↓
+GitHub
+
+
+
+---
+
+
+
+# Quick Revision
+
+| Command       | Purpose                             |
+| ------------- | ----------------------------------- |
+| `git init`    | Initialize repository               |
+| `git status`  | Check repository status             |
+| `git add`     | Stage files                         |
+| `git commit`  | Create snapshot                     |
+| `git log`     | View commit history                 |
+| `git diff`    | View file changes                   |
+| `git restore` | Undo uncommitted changes            |
+| `git reset`   | Unstage files                       |
+| `git rm`      | Remove tracked files                |
+| `git mv`      | Rename/move tracked files           |
+| `git branch`  | Create/List branches                |
+| `git switch`  | Switch branches                     |
+| `git merge`   | Merge branches                      |
+| `git clone`   | Copy repository from GitHub         |
+| `git push`    | Upload commits to GitHub            |
+| `git pull`    | Download latest changes from GitHub |
+
+---
+
+## ✅ Key Takeaways
+
+* Git tracks project history using **commits**.
+* A **repository** is a Git-tracked project.
+* Files move from **Working Directory → Staging Area → Commit → GitHub**.
+* **Branches** allow independent development without affecting the main code.
+* **GitHub** stores repositories online for collaboration and backup.
+
