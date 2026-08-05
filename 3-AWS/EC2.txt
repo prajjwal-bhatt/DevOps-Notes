@@ -1,0 +1,47 @@
+---EC2 (Elastic Compute Cloud)
+A virtual server in AWS used to run applications.
+
+---Elastic
+Ability to scale resources up or down based on demand.
+
+---Compute
+Processing power (vCPU + RAM).
+
+---Cloud
+Resources hosted in AWS data centers.
+
+---AMI (Amazon Machine Image)
+Template containing the operating system and initial configuration.
+
+---Instance Type
+Defines CPU, RAM, and overall performance.
+
+Example:
+
+t2.micro
+t3.micro
+m5.large
+c5.large
+
+---vCPU
+Virtual CPU allocated to an EC2 instance.
+
+---RAM
+Temporary memory used while programs are running.
+
+---EBS (Elastic Block Store)
+Persistent storage attached to an EC2 instance.
+
+---Key Pair
+Public/private key mechanism used for secure SSH access.
+
+---Security Group
+A stateful virtual firewall that controls inbound and outbound traffic to an EC2 instance.
+
+---Stateful
+It means it remembers the connection, when we allow any incoming traffic then it automatically allows the return traffic for that connection.
+Ex: Security Group.
+
+---Stateless
+It means it is not connection aware, it only remembers what you have allowed so you have to explicitly allow traffic in both directions.
+Ex: NACL (Network Access Control Layer)
