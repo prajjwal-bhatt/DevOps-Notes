@@ -1,0 +1,38 @@
+---Public IP
+Internet-accessible IP address assigned to a resource.
+
+---Private IP
+Internal IP address used for communication within a private network.
+
+---VPC (Virtual Private Cloud)
+A logically isolated virtual network in AWS.
+
+---CIDR Block
+Defines the IP address range available in a VPC or subnet.
+
+Example:
+172.31.0.0/16
+
+---Subnet
+A smaller network inside a VPC.
+
+Types:
+Public Subnet: Web server, Load balancer, Bastion Host
+Private Subnet: Database, Internal API, Backend services. 
+
+---Typical Architecture
+Internet
+      │
+Public IP
+      │
+Internet Gateway
+      │
+VPC
+      │
+Public Subnet
+      │
+EC2 (NGINX)
+      │
+Private Subnet
+      │
+Database
