@@ -1,0 +1,36 @@
+---Root Volume
+It is primary storage that your instance boots from. It holds the operating system and the core files needed to startup the machine. Without it the instance would not have an operating system to run.
+
+It's of 2 types:
+
+1. Instance store: It is temporary, physically attached storage that comes directly with some EC2 instance types. It's super fast but not persistent- means if we stop or terminate the instance, the data is lost.
+: Rarely used.
+
+2. EBS (Elastic Block Store)
+Persistent block storage attached to EC2 instances. Used for operating systems, applications, and databases.
+We can attach and detach it from EC2.
+It divides data in multiple blocks and Linux reads and writes these blocks.
+
+---S3 (Simple Storage Service)
+Object storage service used to store files in buckets such as images, videos, backups, and documents.
+: It is Cheap
+: Durable
+: Highly Scalable
+: Highly Available
+
+---Bucket
+A top-level container used to store objects in Amazon S3.
+
+---Object
+A file stored in S3 along with its metadata.
+
+---EFS (Elastic File System)
+Shared file storage that can be mounted by multiple EC2 instances simultaneously.
+
+
+Feature	             EBS	                        EFS	            S3
+---------------------------------------------------------------------------------------------------
+Storage Type	     Block	                        File	            Object
+Attached To 	     One EC2 (typically)	        Multiple EC2        Not attached to EC2
+Use Case	     OS, databases, applications	Shared files        Images, videos, backups, logs
+Can Boot OS?	     ✅ Yes	                        ❌ No	            ❌ No
