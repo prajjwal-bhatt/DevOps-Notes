@@ -36,3 +36,64 @@ EC2 (NGINX)
 Private Subnet
       │
 Database
+
+
+---Internet Gateway (IGW)
+Connects a VPC to the Internet, enabling inbound and outbound internet communication.
+
+---Route Table
+Contains routing rules that determine where network traffic is sent.
+
+Common Route:
+0.0.0.0/0 → Internet Gateway -> It means if the destination is anywhere on the Internet, send that traffic to IGW.
+
+If my VPC is 172.0.0.0/16 -> local, it means if one EC2 talks to another EC2 inside the same VPC, keep the traffic inside AWS.
+
+Other use case of RT:
+1. VPC Peering
+2. VPN
+3. Nat Gateway
+4. VPC Endpoint
+
+---NAT Gateway
+2 types of NAT Gateway are:
+1 Public NAT Gateway:
+Allows instances in private subnets to access the Internet without exposing them to inbound internet traffic.
+
+2. Private NAT Gateway:
+It allows instances in private subnets to connect to another private network without exposing them to internet.
+
+---Security Group
+: A stateful virtual firewall attached to EC2 instances.
+: Works on Instance level.
+: Allow rules only.
+: By default blocks everything.
+
+---Network ACL (NACL)
+: A stateless firewall attached to subnets.
+: Works on the subnet level.
+: Support both allow and deny rules.
+: By default allows everything.
+
+---Complete Request Flow
+User
+   ↓
+Route 53 (DNS)
+   ↓
+Internet
+   ↓
+Internet Gateway
+   ↓
+Route Table
+   ↓
+Public Subnet
+   ↓
+Security Group
+   ↓
+EC2
+   ↓
+NGINX
+   ↓
+Application
+
+
