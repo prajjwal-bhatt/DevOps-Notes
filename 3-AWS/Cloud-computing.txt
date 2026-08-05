@@ -1,0 +1,35 @@
+---Cloud Computing
+Delivery of computing resources over the internet on a pay-as-you-go model.
+
+---AWS
+Amazon Web Services, Amazon's cloud computing platform offering 200+ cloud services.
+
+---Benefits of Cloud
+Pay as you go
+Scalability
+High Availability
+Security
+Global Infrastructure
+
+---Region
+A geographical location where AWS operates data centers.
+
+Examples:
+Mumbai (ap-south-1)
+Hyderabad (ap-south-2)
+Singapore (ap-southeast-1)
+
+---Availability Zone (AZ)
+
+An isolated data center within a Region. Multiple AZs provide redundancy and high availability.
+
+---Architecture
+User
+   │
+Internet
+   │
+AWS Region (Mumbai)
+   │
+Availability Zone
+   │
+EC2 Server
