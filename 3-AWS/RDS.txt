@@ -1,0 +1,35 @@
+---Amazon RDS (Relational Database Service)
+A managed AWS service for running relational databases.
+It stores data in the form of tables.
+AWS amanges its installation, updates, backups, monitoring, High availability, Hardware failures, you only need to manage your data.
+
+---Benefits
+Automated Backups
+Automatic Patching
+Monitoring
+High Availability
+Managed Maintenance
+
+---If we use MySQL we need to do all the above configurations ourself.
+
+---Supported Database Engines
+MySQL
+PostgreSQL
+MariaDB
+Oracle
+Microsoft SQL Server
+
+---Multi-AZ
+Maintains a standby database in another Availability Zone for automatic failover.
+
+---Read Replica
+Creates read-only copies of the database to improve read performance.
+
+---Automated Backup
+Scheduled backups managed by AWS.
+
+---Snapshot
+A manual backup of the database used for recovery or migration.
+
+---Best Practice
+Deploy RDS in a Private Subnet and allow access only from application servers.
