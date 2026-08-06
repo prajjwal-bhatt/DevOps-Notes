@@ -1,0 +1,50 @@
+---Elastic Load Balancer (ELB)
+Distributes incoming traffic across multiple EC2 instances to improve scalability and availability.
+
+There are 4 types of ELB:
+
+1. Application Load Balancer (ALB)
+Layer 7 load balancer for HTTP/HTTPS traffic. Supports URL-based (www.instagram.com), path-based (www.instagram.com/login) and host-based routing (creators.instagram.com).
+Used for: Websites, REST APIs, Microservices.
+
+2. Network Load Balancer (NLB)
+Layer 4 load balancer for TCP/UDP traffic. Optimized for high performance and low latency.
+Used for: Gaming, Financial apps, streaming.
+
+3. Gateway Load Balancer (GWLB)
+Used to distribute traffic across virtual network appliances such as firewalls.
+
+4. Classic Load Balancer (CLB)
+It is an old gen LB which AWS doesn't recommend nowadays, there are better options like ALB or NLB.
+
+---Health Check
+ELB continuously monitors the health of EC2 instances and routes traffic only to healthy instances.
+
+---Auto Scaling Group (ASG)
+It manages EC2 instances by automatically launching or terminating them based on scaling policies.
+We can set min, max and desired numbers of instances for any group.
+
+---Scaling Policy
+Rules that determine when to add or remove EC2 instances, often based on metrics like CPU utilization.
+
+Production Architecture
+                 Users
+                    │
+               Route 53
+                    │
+     Application Load Balancer
+                    │
+          Auto Scaling Group
+        ┌───────────┼───────────┐
+        │           │           │
+      EC2-1       EC2-2       EC2-3
+        │           │           │
+        └───────────┼───────────┘
+                    │
+                  NGINX
+                    │
+              Application
+                    │
+        ┌───────────┴───────────┐
+        │                       │
+      RDS                     S3
