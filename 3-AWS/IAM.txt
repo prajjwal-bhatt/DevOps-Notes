@@ -1,0 +1,45 @@
+---IAM (Identity and Access Management)
+AWS service used to securely manage users, permissions, and access to AWS resources.
+
+---Root User
+The account created during AWS signup with full administrative access. Used only for account-level tasks.
+
+---IAM User
+An identity created for a person or application with specific permissions.
+
+---IAM Group
+A collection of IAM Users used to simplify permission management.
+
+---IAM Policy
+A JSON document that defines what actions are allowed or denied on AWS resources.
+
+---IAM Role
+A temporary identity assumed by AWS services or applications to access AWS resources securely without storing long-term credentials.
+It temporary allows a particular AWS resource to access the other AWS resource for a specific task.
+Example: I create a IAM Role that allows email alert service to read the database (Only the data it needs).
+         When the due date is near then the service assumes that role, and temporary gets permission to query the database, fetch info and send that mail.
+
+
+---Architecture:
+
+                Root User
+                     │
+      ┌──────────────┴──────────────┐
+      │                             │
+ IAM Users                     IAM Groups
+      │                             │
+      └──────────────┬──────────────┘
+                     │
+                 IAM Policies
+                     │
+                     ▼
+               AWS Resources
+
+
+EC2 Instance
+      │
+      ▼
+ IAM Role
+      │
+      ▼
+S3 Bucket
