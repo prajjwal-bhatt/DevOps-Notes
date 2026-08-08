@@ -1,0 +1,84 @@
+---DNS (Domain Name System)
+It translates the human-readable domain names into machine readable IP addresses.
+
+---Domain Name
+Human friendly name of a website address.
+
+---Example:
+google.com
+amazon.in
+                  www               .google                     .com
+              (sub-domain)    (second level domain)       (top-level domain)
+
+---Route 53
+AWS managed DNS service for domain registration and DNS routing.
+Named because DNS uses Port-53 for communication.
+
+Also used for:
+1. Healthy checkup
+2. Traffic routing
+3. DNS management
+
+---Hosted Zone
+A container that stores all DNS records for a domain like A, CNAME, MX, TXT Records.
+
+DNS Records:
+
+---A Record
+Maps a domain name to an IPv4 address.
+
+Ex: google.com -> 172.150.23.34
+
+---CNAME Record
+Maps one domain name to another domain name.
+
+Ex: shop.amazon.com -> amazon.com
+
+---MX Record
+Defines mail servers for a domain.
+
+---TXT Record
+Stores text-based information such as domain verification and email security records.
+If Google ask "prove this is your domain" then by TXT Record it can verify.
+
+---Alias Record
+AWS-specific record used to point domains to AWS resources like Application Load Balancers and CloudFront.
+Because the ELB manages multiple EC2 instances and their underlying IPs may change if ELB terminates them after health check.
+
+---Using Route53 with load balancer
+Instead of pointing your domain to a single EC2 IP, Route 53 can point to an Application Load Balancer, allowing traffic to be distributed across multiple healthy EC2 instances.
+
+---DNS Resolution Flow
+
+Browser
+   │
+DNS Resolver
+   │
+Root DNS
+   │
+TLD (.com)
+   │
+Authoritative Name Server
+   │
+IP Address
+   │
+Web Server
+
+
+---Production Architecture
+
+Users
+   │
+google.com
+   │
+Route 53
+   │
+Application Load Balancer
+   │
+EC2
+   │
+NGINX
+   │
+Application
+   │
+Amazon RDS
