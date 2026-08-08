@@ -1,0 +1,91 @@
+Docker Registry -> Git
+Docker Hub -> Github
+
+---Docker
+An open-source platform used to package applications into containers.
+It packages an application along with everything it needs to run into a container and that package is called Image.
+
+Includes:
+1. Dependencies
+2. Libraries
+3. Application code
+4. Runtime
+5. Configuration
+
+---Container
+A lightweight, isolated runtime environment containing an application and all its dependencies.
+It is a running instance of Docker Image.
+
+
+	Virtual Machine		Docker Container
+        -----------------------------------------------
+	Has own OS		Shares Host OS
+	Heavy			Lightweight
+	Slower startup		Starts in seconds
+	Takes more RAM		Takes less RAM
+	Larger storage		Smaller storage
+	Strong isolation	Process-level isolation
+
+
+---Docker Image
+A read-only template used to create containers.
+
+3 main components of Docker:
+
+├── Docker Client
+
+├── Docker Daemon
+
+└── Docker Registry
+
+
+---Docker Client
+CLI used to interact with Docker, where you write commands.
+
+---Docker Daemon
+Commands that you write in Docker Client, are executed by Docker Daemon.
+Background service responsible for building, running, and managing containers.
+
+Like:
+- Downloads Image
+- Create containers
+- Starts containers
+- Stops containers
+- Remove containers
+
+---Docker Registry
+It stores Docker images.
+
+---Docker Hub
+A public registry used to store and distribute Docker images.
+It is the default registry for Docker.
+
+It also contains image of:
+: Ubuntu
+: NGINX
+: MySQL
+: Jenkins
+: PostgreSQL
+: Python
+: Node.js
+
+---Docker Architecture Flow:
+
+You
+↓
+Docker Client
+↓
+Docker Daemon
+↓
+Docker Hub
+↓
+Image Downloaded
+↓
+Container Created
+
+
+	Image				Container
+        --------------------------------------------------------
+	Template			Running Instance
+	Read-only			Read/Write
+	Cannot execute by itself	Executes the application
