@@ -1,0 +1,56 @@
+---Docker Installation:
+
+	sudo apt update -> Updates ubuntu by refreshing the packages list.
+	sudo apt install docker.io
+
+---Check Version:
+
+	docker --version -> Verify download
+
+***After installing docker it won't run and will show the Permission denied error, so for that we need to add ubuntu user to the docker group by using the command,
+		sudo usermod -aG docker ubuntu
+And after that logout and login back to execute it and then docker will run.
+
+---Docker Service:
+
+	sudo systemctl status docker -> Shows the current active/inactive status
+	sudo systemctl start docker -> Starts the docker
+	sudo systemctl enable docker -> Starts docker automatically when system reboot
+
+---Docker Image Commands:
+
+	docker pull ubuntu -> Will download the image of ubuntu from Docker hub
+	docker images -> Shows the list of all downloaded images
+
+---Docker Container Commands:
+
+	~docker run ubuntu -> Will check if the image is present locally or not, if not it will download the image from Docker hub and will create and start the container.
+	Create container -> Start container -> Takes user inside the container and if we don't want to attach the terminal to it then we use detach mode to make it run in BG.
+	~docker run -d nginx -> Will create a container in detached (background) mode and also run it in BG.
+	~docker run -it ubuntu bash -> Will run the bash shell by going inside the ubuntu container
+	~docker ps -> Will show only running containers
+	~docker ps -a -> Will show all containers (running + stopped)
+
+---Key Concepts:
+
+	Image → Blueprint or template.
+	Container → Running instance of an image.
+	Docker Daemon → Background service that manages containers.
+	Docker Hub → Public registry for Docker images.
+
+
+docker pull			docker run
+-----------------------------------------------------------------------------------------------------------
+Downloads the image only.	Creates and starts a container from an image.
+Does not create a container.	If the image doesn't exist locally, Docker automatically downloads it first.
+
+
+docker run						docker run -d
+-------------------------------------------------------------------------------------------
+Runs in the foreground and attaches your terminal.	Runs in detached (background) mode.
+
+
+docker ps				docker ps -a
+----------------------------------------------------------------------------------------
+Shows only running containers.		Shows all containers, including stopped ones.
+
