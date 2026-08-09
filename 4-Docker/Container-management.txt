@@ -1,0 +1,39 @@
+---Container Lifecycle:
+
+Image
+   │
+docker run
+   ▼
+Running Container
+   │
+docker stop
+   ▼
+Stopped Container
+   │
+docker start
+   ▼
+Running Container
+   │
+docker rm
+   ▼
+Deleted Container
+
+
+---Important Commands:
+
+Command						Purpose
+----------------------------------------------------------------
+docker stop <container id>			Stop a running container
+docker start <id>				Start a stopped container
+docker restart <id>				Restart a container
+docker rm <id>					Remove a container, only after ypu stop it
+docker rmi <image-name>				Remove an image
+docker exec -it	my-nginx bash			Open a bash shell inside a running container and enter it
+docker logs my-nginx				View container logs, display everything the container printed
+docker inspect my-nginx				View detailed container information in JSON like Container ID, image, Network, IP Address, Volumes, Ports, Environment variables
+
+docker run --name my-nginx nginx		Assign a custom container name while creating it
+docker rename OLD NEW				Renames an existing container
+docker container prune				Removes all stopped containers
+docker run -d -p 8080:80 nginx			Map host ports to container ports
+	(-p = publish port)	Will forwards the requests from Port 8080 on the Host to Port 80 inside the container, allowing the external traffic to reach the application running in the container.
