@@ -1,0 +1,55 @@
+---Dockerfile
+Text file containing instructions used to build a Docker image.
+
+---Important Instructions
+
+	Instruction		Purpose
+	--------------------------------------------------------
+	FROM			Specifies base image
+	WORKDIR			Sets working directory 
+	COPY			Copies files into image
+	RUN			Executes commands during build
+	EXPOSE			Documents that the application inside the container expects to use said port
+	CMD			Specifies the default command to run when container starts
+	ENTRYPOINT		Main executable for a container
+
+---STEPS to make a Docker Image:
+
+1.	mkdir docker-image
+
+2.	cd docker-image 
+
+3.	vi index.html
+	- <h1> Hey Praj from Docker! </h1>
+
+4.	vi Dockerfile
+	- FROM nginx
+	  COPY index.html /usr/share/nginx/html
+	  EXPOSE 80
+
+5.	docker build -t my-website .  ->  -t is for giving tag/name to image and (my-website) is the name
+
+6.	docker images -> To check if the image is created.
+
+---To make Container from custom Image:
+
+1.	docker run -d --name website -p 8080:80 my-website
+
+2.	docker tag mywebsite:latest my-website:v1 -> Gives another tag to the container
+						    Tag is human readable label of an image		
+
+3.	docker push username/my-website:v1 -> Pushes your image to Docker hub
+
+---Workflow:
+
+Dockerfile
+    ↓
+docker build
+    ↓
+Image
+    ↓
+docker run
+    ↓
+Container
+    ↓
+Application
