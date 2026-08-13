@@ -1,9 +1,57 @@
-docker compose up -> It will start the container based on the "compose.yaml" file.
+1. docker compose up -> Creates and starts the services defined in compose.yaml.
 
-docker compose build -> It will only do the partial process of "docker compose up" command like it will only make the custom images if there are any inside the Dockerfile which is used inside the "compose.yaml" and not start the containers.
+docker compose up
+        ↓
+Reads compose.yaml
+        ↓
+Builds images if needed
+        ↓
+Creates containers if needed
+        ↓
+Starts containers
 
-docker compose up --build -> It will first build the image again because if you have updated the docker file and the image of it is created earlier so to use a updated image it will create it and then start the container from that image.
+2. docker compose build -> Only builds/rebuilds images for services having a build: configuration.
+			   Does NOT create or start containers.
 
+Ex:
+	services:
+	  backend:
+	    build: ./backend
+THEN,
+	docker compose build
+
+AND finally,
+		 Dockerfile
+    		     ↓
+		docker build
+    		     ↓
+		Docker image
+
+
+3. docker compose up --build -> Forces Compose to build/rebuild the images for services that have a build: configuration because if you have updated the docker file and the image of it, is created earlier so to use a updated image it will build the updated image and then create and start the container from that image.
+
+- Builds/rebuilds the required images first.
+- Then creates and starts the containers.
+
+docker compose up --build
+          ↓
+     Read compose.yaml
+          ↓
+       build:
+          ↓
+      Dockerfile
+          ↓
+    Build/rebuild image
+          ↓
+    Create container
+          ↓
+     Start container
+
+
+IN SHORT: 
+		build       = Build images
+		up          = Create + Start
+		up --build  = Build images + Create + Start
 
 
 ---Docker Compose:
