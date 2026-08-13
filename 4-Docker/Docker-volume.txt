@@ -1,0 +1,32 @@
+---Docker Volume:
+Persistent storage managed by Docker and used to preserve data beyond the lifecycle of a container.
+
+---Important Commands:
+
+1. docker volume create mydata -> create a volume named "mydata"
+2. docker volume ls -> List all the volume
+3. docker volume inspect mydata -> Shows information about the volume
+4. docker run -d -v mydata:/data nginx -> Attaches volume name "mydata" to the "/data" directory of container
+					So whatever we write inside /data will be stored in the volume
+					(-v volume:container-path)
+
+---Bind Mount:
+Instead of using a Docker managed volume we can map an actual directory on the host to a directory inside the container.
+
+-v /host/path:/container/path
+-v /home/ubuntu/website:/usr/share/nginx/html
+If we change anything inside "website" directory of host server, container will see the change and also updates the "html" directory.
+
+
+
+Volume					Bind Mount
+--------------------------------------------------------------------------
+Managed by Docker			Managed by you
+Docker chooses storage location		You specify host path
+Good for application data		Good for development/configuration
+Easy to manage				More control
+
+
+Key Concept
+Container → Disposable
+Volume    → Persistent
