@@ -1,0 +1,99 @@
+---Docker Network:
+Provides communication between Docker containers and external systems.
+
+---Bridge Network:
+A virtual network that allows containers to communicate with each other.
+             
+             Docker Bridge
+            /      |      \
+           /       |       \
+      NGINX     Backend    MySQL
+
+
+docker network create my-network -> To create custom network named "my-network"
+				    Creates a user-defined bridge network.
+
+docker network connect my-network container-name -> To connect a container to custom network "my-network"
+
+docker network disconnect myapp-network container-name -> To disconnect a container from "my-network"
+
+docker network inspect myapp-network -> To see information about the custom network
+
+docker network ls -> List all the networks
+
+docker network rm my-network -> Deletes the custom network
+
+docker run -d --name web1 --network web-net nginx -> Will create a container and connect it to custom bridge
+
+---To see the connection is working or not:
+
+1. Use exec command to go inside the container.
+2. Use curl http://container-name (if custom bridge is there)
+   Use curl http://container-ip   (if default bridge is there)
+
+
+---Containers on the same user-defined network can communicate using container names through Docker's built-in DNS.
+
+NGINX
+  ↓
+Backend
+  ↓
+Database
+
+---Why Names Are Better Than IP Addresses:
+
+Imagine your NGINX container has: 172.18.0.2
+You configure your application to use: 172.18.0.2
+Later the container is recreated, its IP could change.
+Your application breaks.
+
+Instead configure: nginx
+Docker's internal DNS resolves the name to the current container IP.
+
+
+---Docker Network Types:
+
+1. Bridge
+Default/common container networking.
+Ex: Container ↔ Container
+
+2. Host
+Container shares the host's network namespace.
+Ex:  Container
+        ↓
+    Host Network
+
+3. None
+No normal network connectivity.
+Ex:  Container
+        ↓
+     No Network
+
+
+Default Bridge					Custom Bridge
+----------------------------------------------------------------------------
+❌ No automatic DNS by container name		✅ Provides automatic DNS
+Connect using IP address			Connect using container name
+Example: 172.17.0.2				Example: ping container-a
+
+
+Docker Compose					Docker Swarm
+-------------------------------------------------------------------------------------------
+Runs multiple containers			Runs multiple containers
+On one host					Across multiple hosts
+Best for local development / simple apps	Best for multi-host container orchestration
+
+
+Bridge Network					Overlay Network
+---------------------------------------------------------------------------------------------
+Connects containers on one host			Connects containers across multiple hosts
+Used with Docker on a single machine		Commonly used with Docker Swarm
+Example: Container A ↔ Container B on Host 1	Container A on Host 1 ↔ Container B on Host 2
+
+
+Till now maximum flags/options with run command:
+
+docker run -d --name web --network web-net -v /home/website:/data -p 8080:80 nginx
+
+It will create a container fro =n nginx image and will name it "web" and connect it to "web-net" network and attach a local host directory to the container "data" directory and finally maps host 8080 port to containers port 80.
+ 
