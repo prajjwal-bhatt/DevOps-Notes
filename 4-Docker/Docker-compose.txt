@@ -1,0 +1,94 @@
+docker compose up -> It will start the container based on the "compose.yaml" file.
+
+docker compose build -> It will only do the partial process of "docker compose up" command like it will only make the custom images if there are any inside the Dockerfile which is used inside the "compose.yaml" and not start the containers.
+
+docker compose up --build -> It will first build the image again because if you have updated the docker file and the image of it is created earlier so to use a updated image it will create it and then start the container from that image.
+
+
+
+---Docker Compose:
+Tool used to define and manage multi-container Docker applications using a YAML configuration file.
+
+Compose file is like this: compose.yaml
+
+It defines:
+
+	Services
+	Images
+	Ports
+	Networks
+	Volumes
+	Environment variables
+
+---YAML: 
+It is a human readable configuration format.
+
+
+---Important Commands
+
+Command				Purpose
+-----------------------------------------------------
+docker compose up		Create/start services
+docker compose up -d		Start in background
+docker compose down		Stops and removes the compose managed containers and network
+docker compose ps		List Containers belonging to Compose application
+docker compose logs		View logs
+docker compose logs -f		Follow logs
+docker compose build		Build images
+docker compose up -d --build	Build images and start containers
+docker compose config		Docker dry runs the compose file to check errors
+				Validates and renders the Compose file without creating or starting the containers
+
+---Key Concept
+
+compose.yaml
+      ↓
+Docker Compose
+      ↓
+Containers
+      ↓
+Networks + Volumes
+      ↓
+Complete Application
+
+
+
+Docker Run					Docker Compose
+-------------------------------------------------------------------------
+					 	services:
+							web:
+							image: nginx
+docker run -d --name web -p 8080:80 nginx		ports:
+							     - "8080:80"
+			
+
+						docker compose up -d	
+
+
+
+
+---For multiple containers:
+
+services:
+	web:
+	    image: nginx
+	    ports:
+	        - "8080:80"
+	
+	backend:
+	    image: my-backend
+	    environment:
+		  DB_HOST: database
+		  DB_USER: appuser
+
+	database:
+	    image: mysql
+	    volumes: 
+		- db-data:/var/lib/mysql
+
+volumes:
+	db-data:
+
+
+THEN, docker compose up -d
+
