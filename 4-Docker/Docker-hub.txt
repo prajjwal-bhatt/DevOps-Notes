@@ -1,0 +1,76 @@
+---Docker Registry:
+A service that stores and distributes Docker images.
+Ex: Docker Hub
+    Amazon ECR (Elastic Container Registry)
+    Github Container Registry
+
+---Docker Hub:
+A public Docker registry used to store, share, and download Docker images.
+
+---Commands:
+
+1. docker login -> Login to docker Hub
+
+2. docker tag cv-web:latest prajjwal1199/cv-web:v1 -> To give tag to docker image and to tell which account and repository this image belongs to.
+
+prajjwal123/mywebsite:v1
+│          │         │
+│          │         └── Version
+│          └──────────── Repository
+└─────────────────────── Docker Hub username
+
+3. docker push prajjwal1/cv-web:v1 -> It pushes the image to Docker Hub in account of prajjwal1
+
+4. docker pull username/mywebsite:v1 -> Pulls the image from Docker Hub
+
+5. docker run -d -p 8080:80 username/mywebsite:v1
+
+
+---Public vs Private Image:
+
+Public -> Anyone can pull the image.
+Private -> Only authorized users can access it.
+
+---Image Layers:
+Docker images aren't stored as one giant file, they're built from layers.
+
+For example:
+
+Docker Image
+│
+├── Base OS Layer
+├── Dependencies Layer
+├── Application Layer
+└── Configuration Layer
+
+---Docker Build Cache:
+It is a storage space where Docker keeps the results of previous image build steps. Since Docker images are made up of multiple layers, Docker uses the cache to reuse unchanged layers instead of rebuilding them, making image builds faster and more efficient.
+
+---Image Naming:
+
+username/repository:tag
+
+Example:
+
+prajjwal123/mywebsite:v1
+
+
+---Deployment Flow
+
+Dockerfile
+    ↓
+docker build
+    ↓
+Image
+    ↓
+docker tag
+    ↓
+docker push
+    ↓
+Docker Hub
+    ↓
+docker pull
+    ↓
+docker run
+    ↓
+Container
