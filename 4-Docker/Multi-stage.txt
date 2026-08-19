@@ -1,0 +1,57 @@
+---Multi-stage build:
+A Dockerfile containing multiple FROM instructions, allowing separate build and runtime stages.
+
+---Build stage:
+Environment used to compile/build the application.
+
+---Final stage:
+Production image containing only the components required to run the application.
+
+---COPY --from:
+Copies files from another build stage into the current stage.
+
+---Distroless image:
+Minimal container image containing the runtime components needed by an application while excluding most general-purpose OS utilities.
+
+---Benefits:
+
+1. Smaller production images
+2. Faster image transfer/deployment
+3. Reduced attack surface
+4. Cleaner production environments
+
+
+---Basic pattern:
+
+#Stage-1
+
+FROM build-image AS builder        #Build application
+
+#Stage-2
+
+FROM runtime-image
+
+COPY --from=builder /path/to/output /app/
+
+CMD ["application"]
+
+Mental model:
+
+                 BUILD STAGE
+        ┌─────────────────────────┐
+        │ Source Code             │
+        │ Compiler                │
+        │ Dependencies            │
+        │ Build Tools             │
+        └────────────┬────────────┘
+                     │
+                     │ Finished Application
+                     ▼
+               FINAL STAGE
+        ┌─────────────────────────┐
+        │ Minimal Runtime         │
+        │ Application             │
+        └─────────────────────────┘
+                     │
+                     ▼
+              PRODUCTION
