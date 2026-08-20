@@ -31,6 +31,16 @@ docker run -d --name web1 --network web-net nginx -> Will create a container and
 2. Use curl http://container-name (if custom bridge is there)
    Use curl http://container-ip   (if default bridge is there)
 
+			OR
+	
+ping container-name
+ping container-ip
+
+BUT before that we need to install the ping package to run ping command
+
+i.e. apt install iputils-ping -y
+OR
+     apt-get install iputils-ping -y
 
 ---Containers on the same user-defined network can communicate using container names through Docker's built-in DNS.
 
