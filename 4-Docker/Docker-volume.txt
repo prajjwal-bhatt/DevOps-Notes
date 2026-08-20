@@ -17,7 +17,14 @@ Instead of using a Docker managed volume we can map an actual directory on the h
 -v /home/ubuntu/website:/usr/share/nginx/html
 If we change anything inside "website" directory of host server, container will see the change and also updates the "html" directory.
 
+---There is also another command with more detailed tags,
 
+	docker run -d --mount source=volume.name,target=/app nginx:latest
+
+	source= Name of the container
+	target= Location inside the container
+
+---To delete the volume we need to first stop & remove the container and then we can delete the volume.
 
 Volume					Bind Mount
 --------------------------------------------------------------------------
